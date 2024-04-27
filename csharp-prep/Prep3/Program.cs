@@ -13,7 +13,7 @@ class Program
 
         // Use a random number as the magic number.
         Random randomGenerator = new Random();
-        int magic = randomGenerator.Next(1, 100);
+        int magic = randomGenerator.Next(1, 101);
         // Console.WriteLine(magic);
 
         int guess = -1;
@@ -38,7 +38,7 @@ class Program
                 Console.WriteLine("You guessed it!"); 
             }           
         
-        } while (guess != magic );
+        } while (guess != magic);
         
     }
 }

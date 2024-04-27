@@ -56,7 +56,7 @@ class Program
             sign = "";
         }
                
-        Console.WriteLine($"Your grade is {letter}{sign}.");
+        Console.WriteLine($"Your grade is: {letter}{sign}");
         
         // Determine whether the student passed the course.
         // The user must have at least a 70 to pass the class.
