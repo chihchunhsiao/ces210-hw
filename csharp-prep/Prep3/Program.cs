@@ -29,7 +29,7 @@ class Program
 
         Fraction f4 = new Fraction(1, 3);
         
-        // Console.WriteLine($"{f3.GetTop()}/{f3.GetBottom()}");
+        // Console.WriteLine($"{f4.GetTop()}/{f4.GetBottom()}");
 
         Console.WriteLine(f4.GetFractionString());
         Console.WriteLine(f4.GetDecimalValue());
