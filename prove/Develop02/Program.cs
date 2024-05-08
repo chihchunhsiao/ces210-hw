@@ -7,15 +7,13 @@ class Program
 {
     static void Main(string[] args)
     {
-
+        // Initialize the Journal class as a new variable.
         Journal theJournal = new Journal();
-        // List<string> saveEntries = new List<string>();
-        List<Entry> entries = new List<Entry>();
-
-        // PromptGenerator myPrompts = new PromptGenerator();
-       
+               
+        // Create a new List<string> variable and initialize it.
         List<string> prompts = new List<string>();
         
+        // Add 5 prompts to the List<string> prompts.
         prompts.Add("Write about an event you'd like to remember today.");
         prompts.Add("List the top 5 goals you most want to acchieve and write down why.");
         prompts.Add("Write down the person you are most grateful for today and why.");
@@ -24,8 +22,10 @@ class Program
 
         Console.WriteLine("Welcom to the Journal Program!");
 
+        // Set a int variable choice = 0.
         int choice = 0;
 
+        // Use while loop to ask the user's choice and save the answer.
         while(choice < 5)
         {                      
             Console.WriteLine("Please select one of the following Choices: ");
@@ -37,50 +37,48 @@ class Program
             Console.Write("What would you like to do? ");
             int userInput = int.Parse(Console.ReadLine());
                        
-            // Console.WriteLine(userInput);
+            // Declare the variable choice = userInput and judge the condition.
             choice = userInput;
             
             if (choice == 1)
             {
+                //Initialize the Entry class as a new variable. 
                 Entry newEntry = new Entry();
 
-                // Generate random prompt to the user.
+                // Generate a random prompt to the user.
                 var random = new Random();
                 int i = random.Next(prompts.Count);
                 Console.WriteLine(prompts[i]);
 
-                // Save the user's entry.
-                string entry = Console.ReadLine();
-                newEntry._entryText = entry;
-                // Save the time.
-                DateTime theCurrentTime = DateTime.Now;
-                string date = theCurrentTime.ToShortDateString();
-                newEntry._date = date;
-                string prompt = prompts[i];
-                newEntry._promptText = prompt;
+                // Save the user's entry into the newEntry.               
+                newEntry._entryText = Console.ReadLine();
                 
-                theJournal._entries.Add(newEntry);
-                // theJournal._entries = List<Entry> entries;                           
+                // Save the time into the newEntry.
+                DateTime theCurrentTime = DateTime.Now;               
+                newEntry._date = theCurrentTime.ToShortDateString();
+
+                // Save the prompt text into the newEntry.
+                newEntry._promptText = prompts[i];
+                             
+                // Add three valuse of the class variable newEntry into the List<Entry> _entries of theJournal.
+                theJournal._entries.Add(newEntry);  
+                     
 
             }   
             else if (choice == 2)
             {   
-                theJournal.DisplayAll();
+                // Call the DisplayAll method to display all entries of the List<Entry> _entries. 
+                theJournal.DisplayAll(theJournal._entries);
 
-                // for (int i =0; i < saveEntries.Count; i++) 
-                //     {
-                //         Console.WriteLine(saveEntries[i]);
-                //     }
-            }   
+                
+            } 
+
             else if (choice == 3)
             {   
-                Journal j = new Journal();
-                /// Ask for the filename.
-                Console.WriteLine("What is the filename? ");
-                string fileName = Console.ReadLine();
-
-                // theJournal.LoadFromFile(fileName);
                
+                // Call a LoadFromFile method to Load the file.
+                // Save the returned List to the List<Entry> _entries of theJournal.
+                theJournal._entries = theJournal.LoadFromFile();              
 
             }
               
@@ -90,8 +88,8 @@ class Program
                 Console.WriteLine("What is the filename? ");
                 string fileName = Console.ReadLine();
 
-                // theJournal.SaveToFile(entries,fileName);
-
+                // Call a SaveToFile method to save the List<Entry> _entries to an external file.
+                theJournal.SaveToFile(theJournal._entries,fileName);
                 
             }   
         }

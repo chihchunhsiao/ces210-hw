@@ -1,20 +1,22 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
 
 
 
 public class Journal
 {
-    public List<Entry> _entries = new List<Entry>();
+    public List<Entry> _entries;    
       
-
-    public void AddEntry(Entry entry)
+    public Journal() //Initialize the variable _entries.
     {
-        _entries.Add(entry);    
-    }
+        _entries = new List<Entry>();
 
-    public void DisplayAll()
+    }
+   
+
+    public void DisplayAll(List<Entry> _entries) //Give a List<Entry>_entries to display it's content.
     {
         foreach (Entry entry in _entries)
         {
@@ -25,7 +27,7 @@ public class Journal
     }
 
 
-    public static List<Entry> LoadFromFile()
+    public List<Entry> LoadFromFile()
     {
         /// Ask for the filename.
         Console.WriteLine("What is the filename? ");
