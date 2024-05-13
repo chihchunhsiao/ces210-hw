@@ -3,17 +3,35 @@ using System;
 public class Word
 {
     private string _text;
-    // private bool _isHidden;
+    private bool _isHidden;
 
-        public Word(string text)
+    public Word()
     {
-        _text = text;
+        _text = "";
 
-        // _isHidden = true;
-
+        _isHidden = true;
     }
 
-    public void Hide(string word)
+    public void SetText (string text)
+    {
+        _text = text;
+    }
+
+    public string GetText()
+    {
+        return _text;
+    }
+
+
+    public string [] GetWordsArray()
+    {
+        string [] words = _text.Split(' ');
+
+        return words;
+    }
+    
+
+    public string Hide(string word)
     {
         char[] chars = word.ToCharArray();
         
@@ -25,12 +43,12 @@ public class Word
             chars.SetValue('_', j);
         }
             
-        Console.WriteLine(string.Join(null, chars));   
+        return string.Join(null, chars);   
     }
 
-    public void Show(string word)
+    public string Show(string word)
     {
-        Console.WriteLine(word);
+        return word;
     }
 
     public bool IsHidden()
@@ -40,18 +58,20 @@ public class Word
 
     public string GetDisplayText()
     {
+        Word word = new Word();
         string [] words = _text.Split(' ');
         
         for (int i = 0; i < words.Length; i++)
         {
-            // if (Word.IsHidden())
-            // {
-            //     Word.Hide();
-            // }
-            // else
-            // {
-            //     Word.Show();
-            // }
+            
+            if (_isHidden)
+            {
+                words[i] = word.Hide(words[i]);
+            }
+            else
+            {
+                words[i] = word.Show(words[i]);
+            }
         }
         _text = string.Join(" ", words);
         return _text;  
