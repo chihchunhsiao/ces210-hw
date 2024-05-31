@@ -20,7 +20,7 @@ class Program
 
         Product order2Product1 = new Product("MiniMouse", "A04", 20.00, 4);
         Product order2Product2 = new Product("MiniKeyboard", "A05", 30.00, 4);
-        Product order2Product3 = new Product("MiniPanel", "A06", 45.00, 4);
+        Product order2Product3 = new Product("MiniPanel", "A06", 50.00, 4);
         List<Product> products2 = new List<Product>();
         products2.Add(order2Product1);
         products2.Add(order2Product2);
